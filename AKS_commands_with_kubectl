@@ -1,0 +1,24 @@
+1. AZ Login
+
+az login
+az account set --subscription "SUB_NAME"
+                                                            
+2. ACR Login            
+az acr login --name <acrName>
+
+az acr list --resource-group <myResourceGroup> --query "[].{acrLoginServer:loginServer}" --output table acrName - dfeacr.azurecr.io
+
+3. Docker Build & Push
+
+docker build -t <loginServerName>/<appName>:<tag> .
+docker push <LoginServerName>/<appName>:<tag>
+
+5. Install kubectl
+
+az aks install-cli
+az aks get-credentials --resource-group <myResourceGroup> --name <myAKSCluster>
+To verify the connection to your cluster, run the kubectl get nodes command.                             
+kubectl get nodes
+                                                            
+6 Launch Kubernetes Dashboard
+az aks browse --resource-group RG  --name AKS-NAME
