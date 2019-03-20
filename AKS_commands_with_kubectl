@@ -22,3 +22,14 @@ kubectl get nodes
                                                             
 6 Launch Kubernetes Dashboard
 az aks browse --resource-group RG  --name AKS-NAME
+
+7. You can list the current namespaces in a cluster using:
+kubectl get namespaces
+
+Kubernetes starts with three initial namespaces:
+default - The default namespace for objects with no other namespace
+kube-system - The namespace for objects created by the Kubernetes system
+kube-public - This namespace is created automatically and is readable by all users (including those not authenticated). This namespace is mostly reserved for cluster usage, in case that some resources should be visible and readable publicly throughout the whole cluster.
+
+8. You can list the current pods in a cluster using:
+kubectl --namespace=<insert-namespace-name-here> get pods
