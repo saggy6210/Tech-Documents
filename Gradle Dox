@@ -9,4 +9,6 @@ https://guides.gradle.org/creating-new-gradle-builds/
 mkdir basic-demo
 cd basic-demo
 gradle init
+
+a. update build.gradle file with the task like copy & dependancies
 ./gradlew copy 
