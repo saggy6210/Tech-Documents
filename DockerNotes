@@ -1,1 +1,35 @@
 https://codingcompiler.com/docker-interview-questions-answers/
+
+Docker Network:
+
+> Create & run a ngnix container and run in detach(background) mode: 
+docker container run -p 80:80 -d --name webhost nginx
+
+> get Logs 
+docker container logs mywebhost
+
+> To get process ID
+docker container top mywebhost
+
+> Get list of docker containers 
+docker container ls
+
+> Create & run mysql container
+docker container run -d -p 3306:3306 --name db -e MYSQL_RANDOM_ROOT_PASSWORD=y mysql
+docker container logs db
+docker ps
+
+> Create & run apache tomcat server
+docker run -d -p 8080:80 --name webhost1 httpd
+
+> Get container configuration details 
+docker container inspect mysql
+
+> Login into container with interactive mode
+docker container -it exec mysql bash
+
+> to get private IP address of ngnix server with inspect command
+docker inspect --format="{{ .NetworkSettings.IPAddress }}" mywebhost
+
+> To get port getting used
+docker container port mywebhost
