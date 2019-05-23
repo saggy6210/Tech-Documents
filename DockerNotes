@@ -33,3 +33,9 @@ docker inspect --format="{{ .NetworkSettings.IPAddress }}" mywebhost
 
 > To get port getting used
 docker container port mywebhost
+
+> Create network
+docker network create my_net
+
+> Create new nginx server withing network by using existing image
+docker container run -d --name new_webhost --network my_net nginx
