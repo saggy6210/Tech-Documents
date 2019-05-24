@@ -1,0 +1,5 @@
+How to check default route and routing table ?
+netstat -n
+
+How to check which ports are listening in my Linux Server ?
+netstat -listen or lsof -i 
