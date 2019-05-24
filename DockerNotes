@@ -57,3 +57,18 @@ $apt -get update
 $apt-get install iputils-ping
 
 then try again : docker container exec -it mywebhost ping new_webhost
+
+> Docker Compose template:
+
+version: '1.0'
+
+services:
+  servicename:
+    image: 
+	command:
+	environement:
+  
+  servicename2:
+  
+  volumes:
+  networks:
