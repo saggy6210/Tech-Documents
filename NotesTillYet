@@ -1,0 +1,108 @@
+To diable ssl verify
+```
+git config --global http.sslVerify false
+``` 
+
+jenkins installation:
+https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-16-04
+
+To get which distribution of linux:
+echo $(lsb_release -cs)
+
+Runner Setup 
+https://about.gitlab.com/2016/04/19/how-to-set-up-gitlab-runner-on-digitalocean/
+
+Gitlab-runner installation on ubuntu : 
+https://packages.gitlab.com/runner/gitlab-ci-multi-runner/install#manual
+
+curl -L https://packages.gitlab.com/runner/gitlab-ci-multi-runner/gpgkey | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install debian-archive-keyring
+sudo apt-get install -y apt-transport-https
+
+Create a file named /etc/apt/sources.list.d/runner_gitlab-ci-multi-runner.list that contains the repository configuration below.
+
+Make sure to replace ubuntu and trusty in the config below with your Linux distribution and version:
+
+deb https://packages.gitlab.com/runner/gitlab-ci-multi-runner/ubuntu/ trusty main
+deb-src https://packages.gitlab.com/runner/gitlab-ci-multi-runner/ubuntu/ trusty main
+
+[replace trusty to  xenial]
+
+sudo apt-get update
+sudo apt-get install gitlab-runner
+
+Then  do gitlab-ci-multi-runner registration:
+
+sudo gitlab-ci-multi-runner register
+URL: https://code.siemens.com/
+token: follow below steps:
+	Login to ad00 account
+	login to code.siemens.com 
+	Settings > CI/CD > Runner Settings > Expand >Specific runner (pick registration token)
+description: azure
+tag: azure-build
+run untagged build: [by default false] press enter
+lock runner: [by default false] press enter
+executor:  docker
+docker image: hello-world
+
+gitlab-ci-multi-runner commands: 
+
+sudo gitlab-ci-multi-runner status
+sudo gitlab-ci-multi-runner verify
+sudo gitlab-ci-multi-runner list
+
+unregister gitlab-ci-multi-runner:
+sudo gitlab-runner unregister --url https://github.com/ --token XXXXXXXXXXXXXXXXXXXXXXX
+
+Below steps are not required:
+
+openssl req -nodes -newkey rsa:4096 -keyout registry-auth.key -out registry-auth.csr -subj "/CN=gitlab-issuer"
+openssl x509 -in registry-auth.csr -out registry-auth.crt -req -signkey registry-auth.key -days 3650
+
+
+Template: 
+.gitlab-ci.yml file:
+
+image: localhost:5000/azure-java:1.5
+stages:
+  - build
+  - test
+  - deploy
+build:
+    stage: build
+    script: echo "build sucessfully"
+    tags:
+    - azure-build
+test:
+    stage: test
+    script: echo "Tested sucessfully"
+    tags:
+    - azure-build
+deploy:
+    stage: deploy
+    script: echo "deployed successfully"
+    tags:
+    - azure-build
+    
+ ______________________________________________________
+ 
+ docker installation  steps:
+	https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+	
+docker proxy configuration which i made:
+
+/etc/systemd/system/docker.service.d$ cat http-proxy.conf
+
+[Service]
+Environment="HTTP_PROXY=http://proxy-url:8080/" "NO_PROXY=ip"
+
+/etc/systemd/system/docker.service.d$ cat https-proxy.conf
+[Service]
+Environment="HTTPS_PROXY=http://proxy-url:8080"
+
+/etc/docker$ cat daemon.json
+{
+  "insecure-registries" : ["localhost:5000"]
+}
