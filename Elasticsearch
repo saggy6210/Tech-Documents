@@ -77,3 +77,36 @@ curl "localhost:9200/_cat/indices?v"
 
 Search data:
 GET /bank/_search
+
+awscurl -XPUT "ESURL/mdsp-az-jenkins" --secret_key $AWS_SECRET_ACCESS_KEY --session_token $AWS_SECURITY_TOKEN --access_key $AWS_ACCESS_KEY_ID --service es -d'
+{
+        "settings": {
+                "index": {
+                        "number_of_shards": 3,
+                        "number_of_replicas": 2
+                }
+        },
+        "mappings": {
+                "node_details": {
+                        "properties": {
+                                "timestamp": {
+                                        "type": "date",
+                                        "format": "epoch_millis||epoch_second"
+                                },
+                                "@envname":{
+                                                "type":"keyword"
+                                },
+                                "node_status":{
+                                                "type":"integer"
+                                },
+                                "user":{
+                                                "type":"integer"
+                                },
+                                "activesp":{
+                                                "type":"integer"
+                                }
+                        }
+                }
+        }
+}'
+
