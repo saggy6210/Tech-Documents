@@ -1,6 +1,6 @@
 Add following into the /etc/nginx/nginx.conf
 
-sh'''
+```sh
 events {
   worker_connections  4096;  ## Default: 1024
 }
@@ -47,4 +47,4 @@ server{
 }
 }
 include /etc/nginx/site-enabled/*;
-'''
+```
