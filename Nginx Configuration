@@ -1,6 +1,7 @@
 Add following into the /etc/nginx/nginx.conf
 
 ```sh
+
 events {
   worker_connections  4096;  ## Default: 1024
 }
