@@ -15,6 +15,7 @@ Virtualization allows better utilization of resources in a physical server and a
  - Containers are a good way to bundle and run your applications. In a production environment, you need to manage the containers that run the applications and ensure that there is no downtime.
  #### Kubernetes provides you 
  - Service discovery and load balancing
+ -- Kubernetes can expose a container using the DNS name or using their own IP address. If traffic to a container is high, Kubernetes is able to load balance and distribute the network traffic so that the deployment is stable.
 ## Jenkins
 
 ## Linux Scripts
