@@ -40,7 +40,15 @@ Virtualization allows better utilization of resources in a physical server and a
  -- Endpoints controller: Populates the Endpoints object.
  -- Service Account & Token controllers: Create default accounts and API access tokens for new namespaces
  
- 
+ ### Node Component
+ - Node components run on every node, maintaining running pods and providing the Kubernetes runtime environment.
+ - Kubelet -- An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod .
+ - kube-proxy -- kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept.kube-proxy maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster. kube-proxy uses the operating system packet filtering layer if there is one and it's available. Otherwise, kube-proxy forwards the traffic itself.
+ - Container Runtime -- The container runtime is the software that is responsible for running containers.Kubernetes supports several container runtimes: Docker , containerd , CRI-O , and any implementation of the Kubernetes CRI (Container Runtime Interface)
+ - Addons -- Addons use Kubernetes resources (DaemonSet , Deployment , etc) to implement cluster features.
+ - DNS -- Cluster DNS is a DNS server, in addition to the other DNS server(s) in your environment, which serves DNS records for Kubernetes services. Containers started by Kubernetes automatically include this DNS server in their DNS searches.
+ - Web UI -- Dashboard is a general purpose, web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications running in the cluster, as well as the cluster itself.
+Cont
 ## Jenkins
 
 ## Linux Scripts
