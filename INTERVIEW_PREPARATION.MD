@@ -49,6 +49,8 @@ Virtualization allows better utilization of resources in a physical server and a
  - DNS -- Cluster DNS is a DNS server, in addition to the other DNS server(s) in your environment, which serves DNS records for Kubernetes services. Containers started by Kubernetes automatically include this DNS server in their DNS searches.
  - Web UI -- Dashboard is a general purpose, web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications running in the cluster, as well as the cluster itself.
 Cont
+
+
 ## Jenkins
 
 ## Linux Scripts
