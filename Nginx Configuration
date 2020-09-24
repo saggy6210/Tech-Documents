@@ -51,3 +51,23 @@ include /etc/nginx/site-enabled/*;
 
 
 ```
+
+------------------------------------------------------------------------------------------------------------------
+Reverse proxy setup using Nginx:
+
+cat /etc/nginx/sites-available/proxy
+
+
+server {
+        listen 80;
+	#root /usr/share/nginx/html;
+	#index index.html; 
+	location / {
+            proxy_pass http://ubuntuicescrum.eastus.cloudapp.azure.com:8080;
+        }
+}
+
+cd /etc/nginx/sites-enabled
+ls -a /etc/nginx/sites-available/proxy /etc/nginx/sites-enabled/proxy
+
+systemctl status/start/stop nginx
