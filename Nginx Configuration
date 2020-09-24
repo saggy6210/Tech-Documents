@@ -63,7 +63,7 @@ server {
 	#root /usr/share/nginx/html;
 	#index index.html; 
 	location / {
-            proxy_pass http://ubuntuicescrum.eastus.cloudapp.azure.com:8080;
+            proxy_pass http://tomcat/targethost-ip/dns:port;
         }
 }
 
